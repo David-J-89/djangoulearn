@@ -12,8 +12,12 @@ class Tag(models.Model):
         max_length=31,
         unique=True,
         help_text='A label for URL config.')
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering=['name']
+    
+    
 
             
 class Startup(models.Model):
@@ -38,3 +42,6 @@ class NewsLink(models.Model):
     pub_date = models.DateField()
     link = models.URLField(max_length=255)
     startup = models.ForeignKey(Startup)
+    def __str__(self):
+        return"{}:{}".format(
+            self.startup, self.title)

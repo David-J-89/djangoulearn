@@ -16,5 +16,9 @@ class Post(models.Model):
         Tag, related_name='blog_posts')
     startups = models.ManyToManyField(
         Startup, related_name='blog_posts')
+    def __str__(self):
+        return"{} on {}".format(
+            self.title,
+            self.pub_date.strftime('%Y-%m-%d'))
 
 
