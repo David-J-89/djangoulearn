@@ -2,14 +2,14 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import ContactForm, LoginForm
+from .forms import ContactForm, LoginForm, RegisterForm
 
 
 def home_page(request):
     context = {
         "title": "Hello World!",
         "content": "Welcome to the home page.",
-                
+
     }
     if request.user.is_authenticated:
         context["premium_content"] = "YEAHHHHHH"
@@ -32,13 +32,14 @@ def contact_page(request):
         "form": contact_form
     }
     if contact_form.is_valid():
-      print(contact_form.cleaned_data)
+        print(contact_form.cleaned_data)
     # if request.method == "POST":
     #     #print(request.POST)
     #     print(request.POST.get('fullname'))
     #     print(request.POST.get('email'))
     #     print(request.POST.get('content'))
     return render(request, "contact/view.html", context)
+
 
 def login_page(request):
     form = LoginForm(request.POST or None)
@@ -52,25 +53,29 @@ def login_page(request):
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password)
-        #print(request.user.is_authenticated)
+        # print(request.user.is_authenticated)
         print(user)
         if user is not None:
             # print(request.user.is_authenticated)
             login(request, user)
             # Redirect to a success page.
-            #context('form') = LoginForm()
+            # context('form') = LoginForm()
             return redirect("/login")
         else:
             # Return an 'invalid login' error message.
             print("Error")
-    
+
     return render(request, "auth/login.html", context)
 
+
 def register_page(request):
-    form = LoginForm(request.POST or None)
+    form = RegisterForm(request.POST or None)
+    context = {
+        "form": form
+    }
     if form.is_valid():
         print(form.cleaned_data)
-    return render(request, "auth/register.html", {})
+    return render(request, "auth/register.html", context)
 
 
 # def home_page_old(request):
