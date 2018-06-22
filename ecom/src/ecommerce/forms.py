@@ -54,6 +54,13 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError("Username is taken")
         return username
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        qs = User.objects.filter(email=email)
+        if qs.exists():
+            raise forms.ValidationError("Email is taken")
+        return email
+
 
     def clean(self):
         data = self.cleaned_data
