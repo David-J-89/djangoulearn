@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        {% if premium_content %}
+        {% if request.user.is_authenticated %}
         <div class='row'>
             <div class='col'>
                 <h1>Premium</h1>
