@@ -6,6 +6,12 @@ from .models import Product
 #class-based view
 class ProductListView(ListView):
     queryset = Product.objects.all()
+    template_name = "products/list.html"
+
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super(ProductListView, self).get_context_data(*args, **kwargs)
+    #     print(context)
+    #     return context
 
 
 #function-based view
@@ -14,4 +20,4 @@ def product_list_view(request):
     context = {
         'object_list': queryset
     }
-    return render(request, "product/product_list_view.html", context)
+    return render(request, "products/list.html", context)
