@@ -25,7 +25,7 @@ class ProductManager(models.Manager):
        if qs.count() == 1:
            return qs.first()
        return None
-       
+
 class Product(models.Model):  # make sure to name your models as singular
     title = models.CharField(max_length=120)
     description = models.TextField()
