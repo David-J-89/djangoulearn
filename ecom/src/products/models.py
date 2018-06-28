@@ -22,9 +22,10 @@ def upload_image_path(instance, filename):
 class ProductManager(models.Manager):
     def get_by_id(self, id):
        qs = self.get_queryset().filter(id=id) # Product.object == self.get_queryset()
-       if qs.count() = 1:
+       if qs.count() == 1:
            return qs.first()
        return None
+       
 class Product(models.Model):  # make sure to name your models as singular
     title = models.CharField(max_length=120)
     description = models.TextField()
