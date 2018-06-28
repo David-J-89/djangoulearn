@@ -5,6 +5,23 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product
 
 #class-based view
+class ProductFeaturedListView(ListView):
+    template_name = "products/list.html"  
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.featured()
+
+class ProductFeaturedDetailView(DetailView):
+    #queryset = Product.objects.all()
+    template_name = "products/featured-detail.html"
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.featured()  
+
+
+#class-based view
 class ProductListView(ListView):
     template_name = "products/list.html"
 
@@ -16,6 +33,7 @@ class ProductListView(ListView):
     def get_queryset(self, *args, **kwargs):
         request = self.request
         return Product.objects.all()
+
 
 #function-based view
 def product_list_view(request):

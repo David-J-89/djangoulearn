@@ -20,6 +20,8 @@ def upload_image_path(instance, filename):
         )
 
 class ProductManager(models.Manager):
+    def featured(self):
+        return self.get_queryset().filter(featured=True)
     def get_by_id(self, id):
        qs = self.get_queryset().filter(id=id) # Product.object == self.get_queryset()
        if qs.count() == 1:
@@ -38,7 +40,7 @@ class Product(models.Model):  # make sure to name your models as singular
     #current way 
     def __str__(self):
         return self.title
-        
+
     #old way, I think?
     def __unicode__(self):
         return self.title
