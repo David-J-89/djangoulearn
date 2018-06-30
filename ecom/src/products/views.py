@@ -11,15 +11,15 @@ class ProductFeaturedListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         request = self.request
-        return Product.objects.featured()
+        return Product.objects.all().featured()
 
 class ProductFeaturedDetailView(DetailView):
-    #queryset = Product.objects.all()
+    queryset = Product.objects.all().featured()
     template_name = "products/featured-detail.html"
 
-    def get_queryset(self, *args, **kwargs):
-        request = self.request
-        return Product.objects.featured()  
+    # def get_queryset(self, *args, **kwargs):
+    #     request = self.request
+    #     return Product.objects.featured()  
 
 
 #class-based view
@@ -73,7 +73,7 @@ class ProductDetailView(DetailView):
 
 #function-based view
 def product_detail_view(request, pk=None, *args, **kwargs):
-    #instance = Product.objects.get(pk=pk) #id
+    #instance = Product.objects.get(pk=pk, featured=True) #id
     #instance = get_object_or_404(Product, pk=pk)
     # try:
     #     instance = Product.objects.get(id=pk)
