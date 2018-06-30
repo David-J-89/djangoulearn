@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import Product
 
+
 #class-based view
 class ProductFeaturedListView(ListView):
     template_name = "products/list.html"  
