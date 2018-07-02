@@ -1,6 +1,7 @@
 import random
 import os
 from django.db import models
+from .utils import unique_slug_generator
 
 # Create your models here.
 def get_filename_ext(filepath):
