@@ -57,6 +57,11 @@ class Product(models.Model):  # make sure to name your models as singular
 
     objects = ProductManager()
 
+    def get_absolute_url(self):
+        return "/products/{slug}/".format(slug=self.slug)
+
+
+
     #current way 
     def __str__(self):
         return self.title
