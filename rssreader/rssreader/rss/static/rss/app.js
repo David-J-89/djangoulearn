@@ -2,6 +2,7 @@ var rssApp = new Vue({
   el: "#rss-app",
 
   data: {
+    route: "feeds",
     items: [],
     feeds: [],
     newLink: ""
@@ -49,6 +50,19 @@ var rssApp = new Vue({
       this.api("/rss/feeds/" + id + "/", "DELETE").then(() => {
         this.reload();
       });
+    },
+
+    setRoute: function(route) {
+        this.route = route;
+    },
+
+    setup: function() {
+        var hash = window.location.hash;
+
+        if(hash) {
+            this.route = hash.slice(1);
+        }
+        this.reload();
     }
   }
 });
