@@ -1,22 +1,20 @@
 {% extends 'rss/base.html' %}
 
 {% block body %}
-<form action="" method="get">
-    <input type="text" placeholder="RSS feed URL" name="url">
-    <button type="submit">Go</button>
-</form>
-<h2>{{ feed.feed.title }}</h2>
+<div id="rss-app">
+        <div>
+                <input type="text" v-model="newLink" placeholder="RSS feed URL">
+                <button @click="newFeed">Save</button>
+        </div>
 
-{% if feed.items %}
-
-{% for item in feed.items %}
-<div>
-    <p>
-        {{ item.published }}
-        <a href="{{ item.link }}">{{ item.title }}</a>
-        {{ item.author }}
-    </p>
+        {% include 'rss/feeds.html' %}
 </div>
-{% endfor %}
-{% endif %}
+
+{% load static %}
+<script type="application/javascript" src="{% static 'rss/app.js' %}"></script>
+<script type="application/javascript">
+window.addEventListener("load", function() {
+        rssApp.reload();
+});
+</script>
 {% endblock %}
