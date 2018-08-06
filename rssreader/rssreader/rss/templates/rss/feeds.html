@@ -1,11 +1,15 @@
+
 <div>
-    {% verbatim %}
-    <div v-if="items.length" v-for="item in items">
-        <p>
-            {{ item.published }}
-            <a v-bind:href="item.link">{{ item.title }}</a>
-            {{ item.author }}
-        </p>
-    </div>
-    {% endverbatim %}
+        {% verbatim %}
+        <div v-if="items.length" v-for="item in items" class="row mb-2">
+                <div class="col">
+                        {{ item.published }}
+                        <a v-bind:href="item.link">{{ item.title }}</a> 
+                        {{ item.author }}
+                </div>
+        </div>
+        <div v-if="!items.length">
+                <p>Enter your favorite RSS feed above.</p>
+        </div>
+        {% endverbatim %}
 </div>
