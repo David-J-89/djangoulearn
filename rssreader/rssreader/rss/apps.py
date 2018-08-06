@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class rssConfig(AppConfig):
+class RssConfig(AppConfig):
     name = 'rss'

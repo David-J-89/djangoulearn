@@ -1,25 +1,17 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
-import django
 from django.test import TestCase
+from django.urls import reverse
 
-# TODO: Configure your database in settings.py and sync before running tests.
+class RssIndexViewTests()
+    def test_no_feed(self):
+        response = self.client.get(reverse("index"))
 
-class SimpleTest(TestCase):
-    """Tests for the application views."""
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["feed"], None)    
 
-    # Django requires an explicit setup() when running tests in PTVS
-    @classmethod
-    def setUpClass(cls):
-        django.setup()
+    def test_user_feed(self):
+        response = self.client.get(reverse("index") + "?
+        url=https://www.djangoproject.com/rss/weblog/")
 
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.context["feed"], None)
+
