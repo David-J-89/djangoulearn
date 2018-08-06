@@ -73,3 +73,23 @@ def rest_feeds_detail(request, pk):
         elif request.method == "DELETE":
                 feed.delete()
                 return HttpResponse()
+
+
+@csrf_exempt
+def rest_items(request):
+        feeds = Feed.objects.all()
+
+        items = []
+
+        for feed in feeds:
+                rss = feedparser.parse(feed.url)
+
+                try:
+                        items.extend(rss["items"])
+                except KeyError:
+                        continue
+
+        items = list(reversed(sorted(items, key=lambda item: item["published_parsed"])))
+
+        return JsonResponse(items, safe=False)
+
