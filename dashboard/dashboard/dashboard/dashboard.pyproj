@@ -67,9 +67,13 @@
     <Folder Include="notepad\" />
     <Folder Include="notepad\migrations\" />
     <Folder Include="notepad\templates\" />
+    <Folder Include="notepad\templates\notepad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="notepad\templates\index.html" />
+    <Content Include="notepad\templates\notepad\create.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
