@@ -44,6 +44,9 @@
     <Compile Include="dashboard\wsgi.py" />
     <Compile Include="notepad\admin.py" />
     <Compile Include="notepad\apps.py" />
+    <Compile Include="notepad\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="notepad\migrations\__init__.py" />
     <Compile Include="notepad\models.py" />
     <Compile Include="notepad\tests.py" />
