@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
-app_name = 'notes'
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^notes/', include('notepad.urls', namespace='notes'))
+    url(r'^notes/', include(('notepad.urls', 'notepad'), namespace='notes'))
 ]
