@@ -19,8 +19,8 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^notes/', include(('notepad.urls', 'notepad'), namespace='notes'))
-    url(r'^scrape/, scrape)
+    url(r'^notes/', include(('notepad.urls', 'notepad'), namespace='notes')),
+    url(r'^scrape/', scrape)
 ]
 
 if settings.DEBUG:

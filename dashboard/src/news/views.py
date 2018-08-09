@@ -1,12 +1,11 @@
 from django.shortcuts import render
-
 import requests
 requests.packages.urllib3.disable_warnings()
-
 from bs4 import BeautifulSoup
 from datetime import timedelta, timezone, datetime
-
 from .models import Headline, UserProfile
+import os
+import shutil
 
 def scrape(request):
     user_p = UserProfile.objects.filter(user=request.user).first()
