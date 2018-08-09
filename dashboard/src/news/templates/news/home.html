@@ -6,10 +6,12 @@
     <body>
         <div class="jumbotron">
             <h1>Welcome to your dashboard</h1>
-            <form> method="POST" action="{% url 'scrape' %}>
+            <p>{% if hide_me == False %} Your next scrape in in {{ next_scrape }} hours.</p>
+            <form method="POST" action="{% url 'scrape' %}">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Get my morning news</button> 
-            </form>
+                <button type="submit" class="btn btn-primary">Get my morning news</button>
+            </form>    
+            {% endif %}       
         </div>
     </body>
 </html>
