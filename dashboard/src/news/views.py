@@ -18,8 +18,10 @@ def scrape():
     
     for i in posts:
         link = i.find_all('a',{'class':'js_curation-click'})[1]
+        title = i.find_all('a',{'class':'js_curation-click'})[1].text
         image_source = i.find('img',{'featured-image'})['data-src']
-        print(link.text)
+        print(link)
+        print(title)
         print(image_source)
 
 scrape()
