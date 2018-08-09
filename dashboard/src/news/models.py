@@ -15,9 +15,10 @@ class Headline(models.Model):
         return self.title
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     last_scrape = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return "{}-{}".format(self.user, self.last_scrape)
+        return "{}-{}".format(self.user, self.last_scrape)      
+	
 
