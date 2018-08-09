@@ -14,4 +14,7 @@ def scrape():
 
     soup = BeautifulSoup(content, "html.parser")
 
-    columns = soup.find_all('div', {'class':'curation-module__zone grid__zone'})
+    columns = soup.find_all('div', {'class':'curation-module__zone'}) #returns a list
+    print(len(columns))
+
+scrape()
